@@ -1,5 +1,5 @@
-teste-navedex
-Processo Seletivo
+
+ <img style="border-radius: 50%;" src="https://raw.githubusercontent.com/marinaisabels/teste-navedex/master/logo.png" width="100px;" alt=""/>
 
 Desafio de back-end - Navedex API 
 _____
