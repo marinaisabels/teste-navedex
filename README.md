@@ -94,10 +94,15 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[dotENV](https://github.com/motdotla/dotenv)**
 ---
 
-## 🛠 Postman
-- 
+## 🖱️ Documentação do Projeto
+- [Postman](https://documenter.getpostman.com/view/10578922/T1DpDdfv?version=latest)
 
-## Autor
+## Dificuldades 
+
+OS endpoints de detalhes dos navers e projetos não ficou como deveria. Trabalhei para relacionar as tabelas entre si mas não obtive êxito. Estudarei mais a documentação do MYSQL para melhorar esta parte do projeto.
+
+
+## 👩🏿 Autora
 Eu sou a <b>Marina</b>! <br/>
 webdesigner, produtora audiovisual e apaixonada por programação. 💻
 
