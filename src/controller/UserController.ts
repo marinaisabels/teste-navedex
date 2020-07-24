@@ -48,37 +48,4 @@ export class UserController {
             })
         }
     }
-    public async signupNaver(req: Request, res: Response){
-        const {
-            name,
-            birthday, 
-            job_role, 
-            admission_date,
-            projects
-        } = req.body
-
-        try{ 
-            const result = await UserController.UserBusiness.signupNaver(name, birthday, job_role, admission_date, projects)
-            res.status(200).send(
-                result
-            )
-        } catch (err){
-            res.status(err.statusCode || 400).send({
-                error: err.message
-            })
-        }
-    }
-    public async getAllNavers(req: Request, res: Response){
-        const token = req.headers.authorization as string;
-        try{ 
-            const result = await UserController.UserBusiness.getAllNavers(token)
-            res.status(200).send(
-                result
-            )
-        } catch (err){
-            res.status(err.statusCode || 400).send({
-                error: err.message
-            })
-        }
-    }
 }

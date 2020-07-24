@@ -3,7 +3,7 @@ import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 import { User, UserRole, stringToUserRole } from "../model/User";
-import { PassThrough } from "stream";
+
 
 export class UserBusiness {
     constructor(
@@ -39,28 +39,6 @@ export class UserBusiness {
             role: role
         }
     }
-
-    public async signupNaver(name: string, birthday: string, job_role: string, admission_date: number, projects:string, email?: string, password?: string){
-        if(!name|| !birthday){
-            throw new Error("Invalid Params");     
-        }
-
-        const role = UserRole.NAVER
-
-        const idGenerator = new IdGenerator()
-        const id = idGenerator.generatorId()
-
-        const user = new User(id, email, password, name, stringToUserRole(role), birthday, job_role, admission_date, projects)
-
-        const userDatabase = new UserDatabase()
-        await userDatabase.createUserNaver(user)
-
-        return {
-            id:id, 
-            role: role
-        }
-    }
-
     public async login(email: string, password: string){
         const userDatabase = new UserDatabase();
         const user = await userDatabase.getUserByEmail(email)
@@ -93,13 +71,6 @@ export class UserBusiness {
         }
     }
 
-    public async getAllNavers(token: string){
-        const authenticator = new Authenticator()
-        const naverData = authenticator.verify(token)
-
-        const userDatabase = new UserDatabase();
-        await userDatabase.getAllUsers(token)
-
-        
-    }
+   
+    
 }
