@@ -53,8 +53,6 @@ export class NaverBusiness {
         }))
     }
     public async getNaversDetails(token: string) {
-
-        //AINDA NÃO ESTÁ PRONTO!!!!!!!!!!!!!!!!!!!!!
         const authenticator = new Authenticator()
         const naverData = authenticator.verify(token)
 

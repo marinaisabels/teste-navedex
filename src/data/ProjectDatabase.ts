@@ -8,7 +8,8 @@ export class ProjectDatabase extends BaseDatabase {
         return (
             dbResult && new Project(
                 dbResult.id,
-                dbResult.name
+                dbResult.name, 
+                dbResult.navers
             )
         )
     }
@@ -17,6 +18,7 @@ export class ProjectDatabase extends BaseDatabase {
             .insert({
                 id: project.getId(),
                 name: project.getName(),
+                navers: project.getNavers()
             })
             .into(ProjectDatabase.TABLE_NAME)
     }
@@ -38,7 +40,7 @@ export class ProjectDatabase extends BaseDatabase {
     public async editProject(id: string, name: string): Promise<any | undefined> {
         await super.connection().raw(`
             UPDATE ${ProjectDatabase.TABLE_NAME}
-            SET name = "${name}", 
+            SET name = "${name}" 
             WHERE id = "${id}";  
         `)
     }

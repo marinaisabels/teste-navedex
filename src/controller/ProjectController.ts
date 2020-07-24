@@ -15,11 +15,12 @@ export class ProjectController {
 
     public async createProject(req: Request, res: Response) {
         const {
-            name
+            name,
+            navers
         } = req.body
 
         try {
-            const result = await ProjectController.ProjectBusiness.createProject(name)
+            const result = await ProjectController.ProjectBusiness.createProject(name, navers)
             res.status(200).send({
                 result,
                 message: "Projeto criado com sucesso!"
@@ -86,7 +87,7 @@ export class ProjectController {
             const result = await ProjectController.ProjectBusiness.deleteProject(token, id)
             res.status(200).send({
                 result,
-                message: "Naver excluído com sucesso!"
+                message: "Projeto excluído com sucesso!"
             })
         } catch (err) {
             res.status(err.statusCode || 400).send({

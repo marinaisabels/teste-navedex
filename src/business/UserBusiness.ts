@@ -3,6 +3,7 @@ import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 import { User, UserRole, stringToUserRole } from "../model/User";
+import { InvalidInputError } from "../errors/InvalidInputError";
 
 
 export class UserBusiness {
@@ -44,18 +45,18 @@ export class UserBusiness {
         const user = await userDatabase.getUserByEmail(email)
 
         if(!user){
-            throw new Error("Invalid Params");
+            throw new InvalidInputError("Invalid Params");
         }
 
         if(!email || !password){
-            throw new Error("Invalid Params!");
+            throw new InvalidInputError("Invalid Params!");
         }
 
         const hashManager = new HashManager()
         const comparePasswords = await hashManager.compare(password, user.getPassword())
 
         if(!comparePasswords){
-            throw new Error("Invalid Information");
+            throw new InvalidInputError("Invalid Information");
         }
 
         const authenticator = new Authenticator()   

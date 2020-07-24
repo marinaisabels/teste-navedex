@@ -14,18 +14,20 @@ export class ProjectBusiness {
         private idGenerator: IdGenerator
     ){}
 
-    public async createProject( name: string){
+    public async createProject( name: string, navers:string){
       
         const idGenerator = new IdGenerator()
         const id = idGenerator.generatorId()
 
-        const prod = new Project(id, name)
+        const prod = new Project(id, name, navers)
 
         const projectDatabase = new ProjectDatabase()
         await projectDatabase.createProject(prod)
 
         return{
-            id: id
+            id: id, 
+            name: name, 
+            navers: navers
         }
     }
     public async getAllProjects(token: string) {
@@ -43,8 +45,6 @@ export class ProjectBusiness {
         }))
     }
     public async getProjectsDetails(token: string) {
-
-        //AINDA NÃO ESTÁ PRONTO!!!!!!!!!!!!!!!!!!!!!
         const authenticator = new Authenticator()
         const data = authenticator.verify(token)
 
